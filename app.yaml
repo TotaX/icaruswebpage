@@ -5,10 +5,19 @@ api_version: 1
 
 handlers:
 - url: /
-  static_files: index.html
-  upload: index.html
+  script: main.py
+  
+- url: /(about|privacy|contacts|gallery|sitemap)
+  script: main.py
 
-- url: /(.*)
-  static_files: \1
-  upload: (.*)
+- url: /css
+  static_dir: css
 
+- url: /js
+  static_dir: js
+  
+- url: /images
+  static_dir: images
+
+inbound_services:
+- mail
