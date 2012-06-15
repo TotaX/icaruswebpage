@@ -36,15 +36,16 @@ class ContactsPage(webapp.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'contacts.html')
         self.response.out.write(template.render(path,None))
     def post(self):
-        sender = self.request.get('email')
+        sender = 'fernando@icarusdev.com.ar'
         logging.info('SENDER: '+sender)
         subject = 'Contact from website'
         body = self.request.get('message')          
-        logging.info('SENDER: '+body)
         message = mail.EmailMessage(sender=sender, subject=subject)
         message.to = 'contact@icarusdev.com.ar'
         message.body = body
+        message.reply_to = self.request.get('email')
         message.send()
+        self.redirect('/contacts')
 
 class LogSenderHandler(InboundMailHandler):
     def receive(self, mail_message):
