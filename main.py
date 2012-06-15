@@ -36,8 +36,7 @@ class ContactsPage(webapp.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'contacts.html')
         self.response.out.write(template.render(path,None))
     def post(self):
-        sender = 'fernando@icarusdev.com.ar'
-        logging.info('SENDER: '+sender)
+        sender = 'fernando@icarusdev.com.ar'        
         subject = 'Contact from website'
         body = self.request.get('message')          
         message = mail.EmailMessage(sender=sender, subject=subject)
