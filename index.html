@@ -65,7 +65,7 @@
             	<li>
               	<figure><strong>{{ news.number }}</strong>{{ news.month }}</figure>
                 <h3><a href="{{ news.link }}">{{ news.title_link }}</a></h3>
-                {{ news.desc }}
+                {{ news.desc }}<a href="{{ news.link }}">...</a>
               </li>
             {% endfor %}
             </ul>
