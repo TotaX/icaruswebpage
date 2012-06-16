@@ -43,11 +43,9 @@
   <section id="gallery">
   	<div class="container">
     	<ul id="myRoundabout">
-      	<li><img src="images/slide3.jpg" alt=""></li>
-        <li><img src="images/slide2.jpg" alt=""></li>
-        <li><img src="images/slide5.jpg" alt=""></li>
-        <li><img src="images/slide1.jpg" alt=""></li>
-        <li><img src="images/slide4.jpg" alt=""></li>
+        {% for path in list_of_portfolio %}
+            <li><img src="{{ path }}" alt=""></li>
+        {% endfor %}
       </ul>
   	</div>
   </section>
@@ -77,8 +75,6 @@
             	<h2>Welcome to <span>iCarusDev!</span></h2>
               <p>iCarusDev is a company dedicated to iOS developments.</p>
               <figure><a href="#"><img src="images/banner1.jpg" alt=""></a></figure>
-              <p>This website template has several pages: <a href="/">Home</a>, <a href="about">About us</a>, <a href="privacy">Privacy Policy</a>, <a href="gallery">Gallery</a>, <a href="contacts">Contact us</a> (note that contact us form – doesn’t work), <a href="sitemap">Site Map</a>.</p>
-              This website template can be delivered in two packages - with PSD source files included and without them. If you need PSD source files, please go to the template download page at TemplateMonster to leave the e-mail address that you want the template ZIP package to be delivered to.
             </article> 
           </section>
         </div>
