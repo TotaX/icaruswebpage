@@ -1,15 +1,27 @@
 import os
 import logging
+import datetime
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp import util
 from google.appengine.api import mail
-from google.appengine.ext.webapp.mail_handlers import InboundMailHandler 
+from google.appengine.ext.webapp.mail_handlers import InboundMailHandler
+from google.appengine.ext import db
+
+class News(db.Model):
+    number = db.StringProperty(required=True)
+    month = db.StringProperty(required=True)
+    link = db.StringProperty(required=True)
+    title_link = db.StringProperty(required=True)
+    desc = db.StringProperty()
+
 class MainPage(webapp.RequestHandler):
-    def get(self):
+    def get(self):        
+        news_for_index = db.GqlQuery("SELECT * FROM News")
+        template_values = {'lista_de_news': news_for_index}
         path = os.path.join(os.path.dirname(__file__), 'index.html')
-        self.response.out.write(template.render(path,None))
+        self.response.out.write(template.render(path,template_values))
 
 class AboutPage(webapp.RequestHandler):
     def get(self):
