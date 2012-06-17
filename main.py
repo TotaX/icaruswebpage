@@ -99,37 +99,42 @@ class AddNewsPage(webapp.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
-            greeting = ("Welcome, %s! (<a href=\"%s\">sign out</a>)" %
-                        (user.nickname(), users.create_logout_url("/"))) 
-            self.response.out.write("""
-            <html><body>%s
-                    <form action="" method="post" name="create_news">
-                    <fieldset>
-                        <div class="field">
-                            <label for="title_link">Title:</label>
-                            <input type="text" name="title_link" maxlength="100">
-                        </div>
-                        <div class="field">
-                            <label for="link">Link:</label>
-                            <input type="text" name="link">
-                        </div>
-                        <div class="field">
-                            <label for="month">Month:</label>
-                            <input type="text" name="month">
-                        </div>
-                        <div class="field">
-                            <label for="day">Day Number:</label>
-                            <input type="text" name="day">
-                        </div>
-                        <div class="field">
-                            <label for="desc">Description:</label>
-                            <textarea rows="10" cols="40" name="desc"></textarea>
-                        </div>
-                        <input type="submit" value="Save News">
-                        </fieldset>
-                    </form>
-                </body></html>
-                        """ % greeting)
+            if  users.is_current_user_admin():
+                greeting = ("Welcome, %s! (<a href=\"%s\">sign out</a>)" %
+                            (user.nickname(), users.create_logout_url("/"))) 
+                self.response.out.write("""
+                <html><body>%s
+                        <form action="" method="post" name="create_news">
+                        <fieldset>
+                            <div class="field">
+                                <label for="title_link">Title:</label>
+                                <input type="text" name="title_link" maxlength="100">
+                            </div>
+                            <div class="field">
+                                <label for="link">Link:</label>
+                                <input type="text" name="link">
+                            </div>
+                            <div class="field">
+                                <label for="month">Month:</label>
+                                <input type="text" name="month">
+                            </div>
+                            <div class="field">
+                                <label for="day">Day Number:</label>
+                                <input type="text" name="day">
+                            </div>
+                            <div class="field">
+                                <label for="desc">Description:</label>
+                                <textarea rows="10" cols="40" name="desc"></textarea>
+                            </div>
+                            <input type="submit" value="Save News">
+                            </fieldset>
+                        </form>
+                    </body></html>
+                            """ % greeting)
+            else:
+                    self.response.out.write("""<html><body>I'm sorry %s!, you don't have admin access.. 
+                    try with your admin account (<a href=\"%s\">sign out</a>)</body></html>"""
+                    %  (user.nickname(),users.create_logout_url("/")))
         else:
             greeting = ("<a href=\"%s\">Sign in or register</a>." % users.create_login_url("/addNews"))
             self.response.out.write("<html><body>%s</body></html>" % greeting )
