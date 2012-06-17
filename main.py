@@ -9,6 +9,7 @@ from google.appengine.api import mail
 from google.appengine.ext.webapp.mail_handlers import InboundMailHandler
 from google.appengine.ext import db
 
+RANGO_DE_PROFILES = range(1,11)
 class News(db.Model):
     number = db.StringProperty(required=True)
     month = db.StringProperty(required=True)
@@ -20,13 +21,7 @@ class MainPage(webapp.RequestHandler):
     def get(self):        
         news_for_index = db.GqlQuery("SELECT * FROM News")
         
-        list_of_files = []
-        for root, dirs, files in os.walk('images/portfolio/'):
-            for name in files:
-                full_name = os.path.join(root, name)
-                list_of_files.append(full_name)
-                logging.info("ROOT: %s, NAME: %s, DIRS:%s" % (root, name, dirs))
-        
+        list_of_files = RANGO_DE_PROFILES
         #TEMPLTES VALUES FOR THE INDEX
         template_values = {
         'lista_de_news': news_for_index,
@@ -38,13 +33,7 @@ class MainPage(webapp.RequestHandler):
 class AboutPage(webapp.RequestHandler):
     def get(self):
                 
-        list_of_files = []
-        for root, dirs, files in os.walk('images/portfolio/'):
-            for name in files:
-                full_name = os.path.join(root, name)
-                list_of_files.append(full_name)
-                logging.info("ROOT: %s, NAME: %s, DIRS:%s" % (root, name, dirs))
-        
+        list_of_files = RANGO_DE_PROFILES
         #TEMPLTES VALUES FOR THE INDEX
         template_values = {
         'list_of_portfolio': list_of_files
@@ -55,13 +44,7 @@ class AboutPage(webapp.RequestHandler):
 class PrivacyPage(webapp.RequestHandler):
     def get(self):
                 
-        list_of_files = []
-        for root, dirs, files in os.walk('images/portfolio/'):
-            for name in files:
-                full_name = os.path.join(root, name)
-                list_of_files.append(full_name)
-                logging.info("ROOT: %s, NAME: %s, DIRS:%s" % (root, name, dirs))
-        
+        list_of_files = RANGO_DE_PROFILES
         #TEMPLTES VALUES FOR THE INDEX
         template_values = {
         'list_of_portfolio': list_of_files
@@ -72,14 +55,7 @@ class PrivacyPage(webapp.RequestHandler):
 class GalleryPage(webapp.RequestHandler):
     def get(self):
                 
-        list_of_files = []
-        for root, dirs, files in os.walk('images/portfolio/'):
-            for name in files:
-                full_name = os.path.join(root, name)
-                list_of_files.append(full_name)
-                logging.info("ROOT: %s, NAME: %s, DIRS:%s" % (root, name, dirs))
-        
-        #TEMPLTES VALUES FOR THE INDEX
+        list_of_files = RANGO_DE_PROFILES
         template_values = {
         'list_of_portfolio': list_of_files
         }
@@ -89,14 +65,7 @@ class GalleryPage(webapp.RequestHandler):
 class SitemapPage(webapp.RequestHandler):
     def get(self):
         
-        list_of_files = []
-        for root, dirs, files in os.walk('images/portfolio/'):
-            for name in files:
-                full_name = os.path.join(root, name)
-                list_of_files.append(full_name)
-                logging.info("ROOT: %s, NAME: %s, DIRS:%s" % (root, name, dirs))
-        
-        #TEMPLTES VALUES FOR THE INDEX
+        list_of_files = RANGO_DE_PROFILES
         template_values = {
         'list_of_portfolio': list_of_files
         }
@@ -105,15 +74,7 @@ class SitemapPage(webapp.RequestHandler):
 
 class ContactsPage(webapp.RequestHandler):
     def get(self):
-        
-        list_of_files = []
-        for root, dirs, files in os.walk('images/portfolio/'):
-            for name in files:
-                full_name = os.path.join(root, name)
-                list_of_files.append(full_name)
-                logging.info("ROOT: %s, NAME: %s, DIRS:%s" % (root, name, dirs))
-        
-        #TEMPLTES VALUES FOR THE INDEX
+        list_of_files = RANGO_DE_PROFILES
         template_values = {
         'list_of_portfolio': list_of_files
         }

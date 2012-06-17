@@ -43,8 +43,8 @@
   <section id="gallery">
   	<div class="container">
     	<ul id="myRoundabout">
-        {% for path in list_of_portfolio %}
-            <li><img src="{{ path }}" alt=""></li>
+        {% for i in list_of_portfolio %}
+            <li><img src="images/portfolio/portfolio_{{ i }}.jpg" alt=""></li>
         {% endfor %}
       </ul>
   	</div>
