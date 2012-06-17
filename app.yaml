@@ -4,12 +4,7 @@ runtime: python
 api_version: 1
 
 handlers:
-- url: /
-  script: main.py
   
-- url: /(about|privacy|contacts|gallery|sitemap)
-  script: main.py
-
 - url: /css
   static_dir: css
 
@@ -18,6 +13,9 @@ handlers:
   
 - url: /images
   static_dir: images
+
+- url: /(.*)
+  script: main.py
 
 inbound_services:
 - mail

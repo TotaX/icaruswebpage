@@ -8,6 +8,8 @@ from google.appengine.ext.webapp import util
 from google.appengine.api import mail
 from google.appengine.ext.webapp.mail_handlers import InboundMailHandler
 from google.appengine.ext import db
+from google.appengine.api import users
+
 
 RANGO_DE_PROFILES = range(1,11)
 class News(db.Model):
@@ -92,10 +94,55 @@ class ContactsPage(webapp.RequestHandler):
         message.send()
         self.redirect('/contacts')
 
-
-class LogSenderHandler(InboundMailHandler):
-    def receive(self, mail_message):
-        logging.info("Received a message from: " + mail_message.sender)
+#admin
+class AddNewsPage(webapp.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+            greeting = ("Welcome, %s! (<a href=\"%s\">sign out</a>)" %
+                        (user.nickname(), users.create_logout_url("/"))) 
+            self.response.out.write("""
+            <html><body>%s
+                    <form action="" method="post" name="create_news">
+                    <fieldset>
+                        <div class="field">
+                            <label for="title_link">Title:</label>
+                            <input type="text" name="title_link" maxlength="100">
+                        </div>
+                        <div class="field">
+                            <label for="link">Link:</label>
+                            <input type="text" name="link">
+                        </div>
+                        <div class="field">
+                            <label for="month">Month:</label>
+                            <input type="text" name="month">
+                        </div>
+                        <div class="field">
+                            <label for="day">Day Number:</label>
+                            <input type="text" name="day">
+                        </div>
+                        <div class="field">
+                            <label for="desc">Description:</label>
+                            <textarea rows="10" cols="40" name="desc"></textarea>
+                        </div>
+                        <input type="submit" value="Save News">
+                        </fieldset>
+                    </form>
+                </body></html>
+                        """ % greeting)
+        else:
+            greeting = ("<a href=\"%s\">Sign in or register</a>." % users.create_login_url("/addNews"))
+            self.response.out.write("<html><body>%s</body></html>" % greeting )
+            
+    def post(self):
+        title_link = self.request.get('title_link')
+        link = self.request.get('link')
+        month = self.request.get('month')
+        day = self.request.get('day')
+        desc = self.request.get('desc')
+        newNews = News(number=day, desc=desc, month=month,link=link, title_link=title_link)
+        newNews.put()
+        
 
 application = webapp.WSGIApplication(
                                      [  ('/', MainPage),
@@ -103,8 +150,8 @@ application = webapp.WSGIApplication(
                                         ('/about',AboutPage),
                                         ('/privacy',PrivacyPage),
                                         ('/contacts',ContactsPage),
-                                        ('/gallery',GalleryPage),                                        
-                                       LogSenderHandler.mapping()
+                                        ('/gallery',GalleryPage),
+                                        ('/addNews',AddNewsPage)
                                       ],
                                      debug=True)
 def main():
