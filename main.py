@@ -21,7 +21,7 @@ class News(db.Model):
 
 class MainPage(webapp.RequestHandler):
     def get(self):        
-        news_for_index = db.GqlQuery("SELECT * FROM News")
+        news_for_index = db.GqlQuery("SELECT * FROM News ORDER BY month,number DESC LIMIT 4")
         
         list_of_files = RANGO_DE_PROFILES
         #TEMPLTES VALUES FOR THE INDEX
