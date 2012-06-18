@@ -29,7 +29,7 @@ class MainPage(webapp.RequestHandler):
         'lista_de_news': news_for_index,
         'list_of_portfolio': list_of_files
         }
-        path = os.path.join(os.path.dirname(__file__), 'index.html')
+        path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
         self.response.out.write(template.render(path,template_values))
 
 class AboutPage(webapp.RequestHandler):
@@ -40,7 +40,7 @@ class AboutPage(webapp.RequestHandler):
         template_values = {
         'list_of_portfolio': list_of_files
         }
-        path = os.path.join(os.path.dirname(__file__), 'about.html')
+        path = os.path.join(os.path.dirname(__file__), 'templates/about.html')
         self.response.out.write(template.render(path,template_values))
 
 class PrivacyPage(webapp.RequestHandler):
@@ -51,7 +51,7 @@ class PrivacyPage(webapp.RequestHandler):
         template_values = {
         'list_of_portfolio': list_of_files
         }
-        path = os.path.join(os.path.dirname(__file__), 'privacy.html')
+        path = os.path.join(os.path.dirname(__file__), 'templates/privacy.html')
         self.response.out.write(template.render(path,template_values))
 
 class GalleryPage(webapp.RequestHandler):
@@ -61,7 +61,7 @@ class GalleryPage(webapp.RequestHandler):
         template_values = {
         'list_of_portfolio': list_of_files
         }
-        path = os.path.join(os.path.dirname(__file__), 'gallery.html')
+        path = os.path.join(os.path.dirname(__file__), 'templates/gallery.html')
         self.response.out.write(template.render(path,template_values))
         
 class SitemapPage(webapp.RequestHandler):
@@ -71,7 +71,7 @@ class SitemapPage(webapp.RequestHandler):
         template_values = {
         'list_of_portfolio': list_of_files
         }
-        path = os.path.join(os.path.dirname(__file__), 'sitemap.html')
+        path = os.path.join(os.path.dirname(__file__), 'templates/sitemap.html')
         self.response.out.write(template.render(path,template_values))        
 
 class ContactsPage(webapp.RequestHandler):
@@ -80,7 +80,7 @@ class ContactsPage(webapp.RequestHandler):
         template_values = {
         'list_of_portfolio': list_of_files
         }
-        path = os.path.join(os.path.dirname(__file__), 'contacts.html')
+        path = os.path.join(os.path.dirname(__file__), 'templates/contacts.html')
         self.response.out.write(template.render(path,template_values))
         
     def post(self):

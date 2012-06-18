@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} Contact us - Contacts Page | iCarusDev - iOS Developments {% endblock %}
+{% block body %}  
+  <div class="main-box">
+    <div class="container">
+      <div class="inside">
+        <div class="wrapper">
+        	<!-- aside -->
+          <aside>
+            <h2>Our <span>Contacts</span></h2>
+            <!-- .contacts -->
+            <ul class="contacts">
+            	<li><strong>Zip Code:</strong>2000</li>
+              <li><strong>Country:</strong>AR</li>
+              <li><strong>City:</strong>Rosario</li>	
+              <li><strong>Email:</strong><a href="mailto:contact@icarusdev.com.ar">contact@icarusdev.com.ar</a></li>
+            </ul>
+            <!-- /.contacts -->
+            <h3>Miscellaneous info:</h3>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
+          </aside>
+          <!-- content -->
+          
+          
+          <section id="content">
+            <article>
+            	<h2>Contact <span>Form</span></h2>
+
+                <form id="contacts" action="" method="post" name="contact">
+                <fieldset>
+                    <label for="subject">Subject:</label>
+                    <input id="id_subject" type="text" name="subject" maxlength="100">
+                    <div class="field">
+                        <label for="email">Email:</label>
+                        <input id="email" type="text" name="email">
+                    </div>
+                    <div class="field">
+                        <label for="message">Message:</label>
+                        <textarea id="id_message" rows="10" cols="40" name="message"></textarea>
+                    </div>
+                    <input type="submit" value="Submit">
+                </fieldset>                    
+                </form>
+            </article> 
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

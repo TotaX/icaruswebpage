@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}  Home - Home Page | iCarusDev - iOS Developments {% endblock %}
+{% block body %}
+  <div class="main-box">
+    <div class="container">
+      <div class="inside">
+        <div class="wrapper">
+        	<!-- aside -->
+          <aside>
+            <h2>Recent <span>News</span></h2>
+            <!-- .news -->
+            <ul class="news">
+            {%for news in lista_de_news %}
+            	<li>
+              	<figure><strong>{{ news.number }}</strong>{{ news.month }}</figure>
+                <h3><a href="{{ news.link }}">{{ news.title_link }}</a></h3>
+                {{ news.desc }}<a href="{{ news.link }}">...</a>
+              </li>
+            {% endfor %}
+            </ul>
+            <!-- /.news -->
+          </aside>
+          <!-- content -->
+          <section id="content">
+            <article>
+            	<h2>Welcome to <span>iCarusDev!</span></h2>
+              <p>iCarusDev is a company dedicated to iOS developments.</p>
+              <figure><a href="#"><img src="images/banner1.jpg" alt=""></a></figure>
+            </article> 
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
