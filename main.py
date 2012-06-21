@@ -27,7 +27,8 @@ class MainPage(webapp.RequestHandler):
         #TEMPLTES VALUES FOR THE INDEX
         template_values = {
         'lista_de_news': news_for_index,
-        'list_of_portfolio': list_of_files
+        'list_of_portfolio': list_of_files,
+        'path' : self.request.path
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
         self.response.out.write(template.render(path,template_values))
@@ -38,7 +39,8 @@ class AboutPage(webapp.RequestHandler):
         list_of_files = RANGO_DE_PROFILES
         #TEMPLTES VALUES FOR THE INDEX
         template_values = {
-        'list_of_portfolio': list_of_files
+        'list_of_portfolio': list_of_files,
+        'path': self.request.path
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/about.html')
         self.response.out.write(template.render(path,template_values))
@@ -49,7 +51,8 @@ class PrivacyPage(webapp.RequestHandler):
         list_of_files = RANGO_DE_PROFILES
         #TEMPLTES VALUES FOR THE INDEX
         template_values = {
-        'list_of_portfolio': list_of_files
+        'list_of_portfolio': list_of_files,
+        'path': self.request.path
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/privacy.html')
         self.response.out.write(template.render(path,template_values))
@@ -59,7 +62,8 @@ class GalleryPage(webapp.RequestHandler):
                 
         list_of_files = RANGO_DE_PROFILES
         template_values = {
-        'list_of_portfolio': list_of_files
+        'list_of_portfolio': list_of_files,
+        'path': self.request.path
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/gallery.html')
         self.response.out.write(template.render(path,template_values))
@@ -69,7 +73,8 @@ class SitemapPage(webapp.RequestHandler):
         
         list_of_files = RANGO_DE_PROFILES
         template_values = {
-        'list_of_portfolio': list_of_files
+        'list_of_portfolio': list_of_files,
+        'path': self.request.path
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/sitemap.html')
         self.response.out.write(template.render(path,template_values))        
@@ -78,7 +83,8 @@ class ContactsPage(webapp.RequestHandler):
     def get(self):
         list_of_files = RANGO_DE_PROFILES
         template_values = {
-        'list_of_portfolio': list_of_files
+        'list_of_portfolio': list_of_files,
+        'path': self.request.path
         }
         path = os.path.join(os.path.dirname(__file__), 'templates/contacts.html')
         self.response.out.write(template.render(path,template_values))
