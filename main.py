@@ -11,7 +11,7 @@ from google.appengine.ext import db
 from google.appengine.api import users
 
 
-RANGO_DE_PROFILES = range(1,11)
+RANGO_DE_PROFILES = range(1,14)
 class News(db.Model):
     number = db.StringProperty(required=True)
     month = db.StringProperty(required=True)
